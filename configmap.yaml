@@ -1,0 +1,18 @@
+# create kubernetes configmap.yaml file
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-config
+data:
+  my-key: my-value
+  another-key: another-value
+  config.json: |
+    {
+      "setting1": "value1",
+      "setting2": "value2"
+    }
+  app.properties: |
+    app.name=MyApp
+    app.version=1.0.0
+  database.properties: |
+  

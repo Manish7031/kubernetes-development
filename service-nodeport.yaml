@@ -1,0 +1,19 @@
+# create nodeport service.yaml file
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodeport-service
+spec:
+  type: NodePort
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      nodePort: 30080
+    - protocol: TCP
+      port: 443
+      targetPort: 8443
+      nodePort: 30443
+      

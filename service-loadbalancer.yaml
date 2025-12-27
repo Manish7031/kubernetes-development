@@ -1,0 +1,26 @@
+# create loadbalancer service.yaml file
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-loadbalancer-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: my-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+    - protocol: TCP
+      port: 443
+      targetPort: 8443
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+    - protocol: TCP
+      port: 8443
+      targetPort: 8443
+    - protocol: TCP
+      port: 9090
+      targetPort: 9090

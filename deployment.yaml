@@ -1,0 +1,39 @@
+# create deployment.yaml file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+     containers:
+        - name: my-container
+          image: my-image:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CONFIG_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: my-config
+                  key: my-key
+            - name: SECRET_DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: db_pass
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+              readOnly: true
+          volumes:
+        - name: config-volume
+          configMap:
+            name: my-config
