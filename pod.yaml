@@ -16,7 +16,7 @@ containers:
         - name: config-volume
           mountPath: /etc/config
         - name: secret-volume
-          mountPath: /etc/secret
+          mountPath: /etc/secrets
       volumes:
     - name: config-volume
       configMap:
