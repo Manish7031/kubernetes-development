@@ -1,0 +1,11 @@
+# create namesapce.yaml file for name = development and stage
+apiVersion: v1
+kind: Namespace1
+metadata:
+  name: development
+---
+apiVersion: v1
+kind: Namespace1
+metadata:
+  name: stage
+---

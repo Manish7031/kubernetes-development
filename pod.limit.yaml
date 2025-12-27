@@ -1,0 +1,28 @@
+# create pod.limit.yaml file
+
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: pod-limit-range
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["sh", "-c", "sleep 3600"]
+  limits:
+  - type: Pod
+    max:
+      cpu: "2"
+      memory: "4Gi"
+    min:
+      cpu: "200m"
+      memory: "256Mi"
+    default:
+      cpu: "1"
+      memory: "2Gi"
+    defaultRequest:
+      cpu: "500m"
+      memory: "512Mi"
+    maxLimitRequestRatio:
+      cpu: "4"
+      memory: "8Gi"
